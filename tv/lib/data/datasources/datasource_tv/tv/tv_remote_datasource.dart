@@ -1,4 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:flutter/services.dart';
+import 'package:http/io_client.dart';
 import 'package:core/utils/exception.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,10 +26,23 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
   TvRemoteDataSourceImpl({required this.client});
 
+   Future<SecurityContext> get globalContext async {
+    final sslCert = await rootBundle.load('certificates/certificates.cer');
+    SecurityContext securityContext = SecurityContext(withTrustedRoots: false);
+    securityContext.setTrustedCertificatesBytes(sslCert.buffer.asInt8List());
+    return securityContext;
+  }
+
   @override
   Future<List<TvModel>> getNowPlayingTv() async {
+
+        HttpClient client = HttpClient(context: await globalContext);
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => false;
+    IOClient ioClient = IOClient(client);
+
     final response =
-        await client.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY'));
+        await ioClient.get(Uri.parse('$BASE_URL/tv/on_the_air?$API_KEY'));
 
     if (response.statusCode == 200) {
       return TvResponse.fromJson(json.decode(response.body)).tvList;
@@ -37,8 +53,13 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
   @override
   Future<TvDetailResponse> getTvDetail(int id) async {
+    HttpClient client = HttpClient(context: await globalContext);
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => false;
+    IOClient ioClient = IOClient(client);
+
     final response =
-        await client.get(Uri.parse('$BASE_URL/tv/$id?$API_KEY'));
+        await ioClient.get(Uri.parse('$BASE_URL/tv/$id?$API_KEY'));
 
     if (response.statusCode == 200) {
       return TvDetailResponse.fromJson(json.decode(response.body));
@@ -49,7 +70,12 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
   @override
   Future<List<TvModel>> getTvRecommendations(int id) async {
-    final response = await client
+        HttpClient client = HttpClient(context: await globalContext);
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => false;
+    IOClient ioClient = IOClient(client);
+
+    final response = await ioClient
         .get(Uri.parse('$BASE_URL/tv/$id/recommendations?$API_KEY'));
 
     if (response.statusCode == 200) {
@@ -61,8 +87,14 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
   @override
   Future<List<TvModel>> getPopularTv() async {
+
+            HttpClient client = HttpClient(context: await globalContext);
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => false;
+    IOClient ioClient = IOClient(client);
+
     final response =
-        await client.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY'));
+        await ioClient.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY'));
 
     if (response.statusCode == 200) {
       return TvResponse.fromJson(json.decode(response.body)).tvList;
@@ -73,8 +105,14 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
   @override
   Future<List<TvModel>> getTopRatedTv() async {
+
+            HttpClient client = HttpClient(context: await globalContext);
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => false;
+    IOClient ioClient = IOClient(client);
+
     final response =
-        await client.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY'));
+        await ioClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY'));
 
     if (response.statusCode == 200) {
       return TvResponse.fromJson(json.decode(response.body)).tvList;
@@ -85,7 +123,13 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
 
   @override
   Future<List<TvModel>> searchTv(String query) async {
-    final response = await client
+
+            HttpClient client = HttpClient(context: await globalContext);
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => false;
+    IOClient ioClient = IOClient(client);
+
+    final response = await ioClient
         .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$query'));
 
     if (response.statusCode == 200) {
