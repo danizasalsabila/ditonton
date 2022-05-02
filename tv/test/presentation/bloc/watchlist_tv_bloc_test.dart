@@ -8,11 +8,10 @@ import 'package:tv/domain/entities/tv/tvseries.dart';
 import 'package:tv/domain/usecases/tv/get_watchlist_tv.dart';
 import 'package:tv/presentation/bloc/watchlist/bloc/watchlist_tv_bloc.dart';
 
-import 'watchlist_tv_bloc_test.mocks.dart';
+import '../../helpers/tv/bloc_helper.mocks.dart';
 
 
 
-@GenerateMocks([GetWatchlistTv])
 void main() {
   late MockGetWatchlistTv mockGetWatchlistTv;
   late WatchlistTvBloc blocTv;
