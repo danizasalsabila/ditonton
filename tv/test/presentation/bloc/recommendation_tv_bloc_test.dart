@@ -9,12 +9,11 @@ import 'package:tv/domain/entities/tv/tvseries.dart';
 import 'package:tv/domain/usecases/tv/get_tv_recommendations.dart';
 import 'package:tv/presentation/bloc/recommendations/bloc/recommendation_tv_bloc.dart';
 
-import 'recommendation_tv_bloc_test.mocks.dart';
+import '../../helpers/tv/bloc_helper.mocks.dart';
 
 
 
 
-@GenerateMocks([GetTvRecommendations])
 void main() {
   late MockGetTvRecommendations mockGetTvRecommendations;
   late RecommendationTvBloc blocTv;
