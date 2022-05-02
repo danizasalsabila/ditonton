@@ -16,10 +16,10 @@ void main() {
   const BASE_URL = 'https://api.themoviedb.org/3';
 
   late TvRemoteDataSourceImpl dataSourceTv;
-  late MockHttpClient mockHttpClient;
+  late MockApiIOClient mockHttpClient;
 
   setUp(() {
-    mockHttpClient = MockHttpClient();
+    mockHttpClient = MockApiIOClient();
     dataSourceTv = TvRemoteDataSourceImpl(client: mockHttpClient);
   });
 
