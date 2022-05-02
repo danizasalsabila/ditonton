@@ -9,12 +9,10 @@ import 'package:tv/domain/entities/tv/tvseries.dart';
 import 'package:tv/domain/usecases/tv/get_popular_tv.dart';
 import 'package:tv/presentation/bloc/popular_tv/popular_tv_bloc.dart';
 
-import 'popular_tv_bloc_test.mocks.dart';
+import '../../helpers/tv/bloc_helper.mocks.dart';
 
 
 
-
-@GenerateMocks([GetPopularTv])
 void main() {
   late MockGetPopularTv mockGetPopularTv;
   late PopularTvBloc bloc;
