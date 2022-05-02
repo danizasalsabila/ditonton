@@ -9,12 +9,11 @@ import 'package:tv/domain/entities/tv/tvseries.dart';
 import 'package:tv/domain/usecases/tv/get_top_rated_tv.dart';
 import 'package:tv/presentation/bloc/top_rated/bloc/top_rated_tv_bloc.dart';
 
-import 'top_rated_tv_bloc_test.mocks.dart';
+import '../../helpers/tv/bloc_helper.mocks.dart';
 
 
 
 
-@GenerateMocks([GetTopRatedTv])
 void main() {
   late MockGetTopRatedTv mockGetTopRatedTv;
   late TopRatedTvBloc blocTv;
