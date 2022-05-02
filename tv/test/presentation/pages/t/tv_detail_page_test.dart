@@ -245,3 +245,4 @@ void main() {
     expect(textErrorBarFinder, findsOneWidget);
   });
 }
+ 
