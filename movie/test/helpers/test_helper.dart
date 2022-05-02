@@ -1,3 +1,4 @@
+import 'package:core/ssl/ssl_pining.dart';
 import 'package:movie/data/datasources/db/database_helper_movie.dart';
 import 'package:movie/data/datasources/movie_local_data_source.dart';
 import 'package:movie/data/datasources/movie_remote_data_source.dart';
@@ -11,6 +12,7 @@ import 'package:http/http.dart' as http;
   MovieLocalDataSource,
   DatabaseHelper,
 ], customMocks: [
-  MockSpec<http.Client>(as: #MockHttpClient)
+  MockSpec<http.Client>(as: #MockHttpClient),
+  MockSpec<ApiIOClient>(as: #MockApiIOClient)
 ])
 void main() {}
