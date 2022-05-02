@@ -8,12 +8,12 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'popular_tv_page_test.mocks.dart';
+import '../../../helpers/tv/bloc_helper.mocks.dart';
 
 
 
 
-@GenerateMocks([PopularTvBloc])
+
 void main() {
   late MockPopularTvBloc mockPopularTvBloc;
 
