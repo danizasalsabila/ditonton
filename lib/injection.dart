@@ -1,3 +1,4 @@
+import 'package:core/ssl/ssl_pining.dart';
 import 'package:movie/data/datasources/db/database_helper_movie.dart';
 import 'package:movie/data/datasources/movie_local_data_source.dart';
 import 'package:movie/data/datasources/movie_remote_data_source.dart';
@@ -182,4 +183,7 @@ void init() {
 
   // external
   locator.registerLazySingleton(() => http.Client());
+
+  //SSL
+  locator.registerLazySingleton<ApiIOClient>(() => ApiIOClient());
 }
