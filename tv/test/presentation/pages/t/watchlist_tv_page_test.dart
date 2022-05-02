@@ -10,12 +10,11 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tv/presentation/pages/tv/watchlist_tv_page.dart';
 
-import 'top_rated_tv_page_test.mocks.dart';
-import 'watchlist_tv_page_test.mocks.dart';
+import '../../../helpers/tv/bloc_helper.mocks.dart';
 
 
 
-@GenerateMocks([WatchlistTvBloc])
+
 void main() {
   late MockWatchlistTvBloc mockWatchlistTvBloc;
 
