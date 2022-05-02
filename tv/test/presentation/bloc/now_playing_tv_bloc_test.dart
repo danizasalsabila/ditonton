@@ -8,13 +8,10 @@ import 'package:tv/domain/entities/tv/tvseries.dart';
 import 'package:tv/domain/usecases/tv/get_now_playing_tv.dart';
 import 'package:tv/presentation/bloc/now_playing/bloc/now_playing_tv_bloc.dart';
 
-import 'now_playing_tv_bloc_test.mocks.dart';
+import '../../helpers/tv/bloc_helper.mocks.dart';
 
 
 
-@GenerateMocks([
-  GetNowPlayingTv,
-])
 void main() {
   late NowPlayingTvBloc nowPlayingTvBloc;
   late MockGetNowPlayingTv mockGetNowPlayingTv;
