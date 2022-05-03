@@ -187,3 +187,4 @@ void init() {
   //SSL
   locator.registerLazySingleton<ApiIOClient>(() => ApiIOClient());
 }
+ 
